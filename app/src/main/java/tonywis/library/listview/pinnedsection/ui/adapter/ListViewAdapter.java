@@ -18,7 +18,7 @@ import tonywis.library.listview.pinnedsection.ui.adapter.model.Item;
 /**
  * Created by Tony on 19/06/2016.
  */
-public class ListViewAdapter extends ArrayAdapter<Item<JourneyManager>> implements PinnedSectionListView.PinnedSectionListAdapter {
+public class ListViewAdapter extends ArrayAdapter<Item<String, JourneyManager>> implements PinnedSectionListView.PinnedSectionListAdapter {
 
     private int resId;
     private LayoutInflater layoutInflater;
@@ -26,7 +26,7 @@ public class ListViewAdapter extends ArrayAdapter<Item<JourneyManager>> implemen
             R.color.green_light, R.color.orange_light,
             R.color.blue_light, R.color.red_light };
 
-    public ListViewAdapter(Context context, int resource, List<Item<JourneyManager>> objects) {
+    public ListViewAdapter(Context context, int resource, List<Item<String, JourneyManager>> objects) {
         super(context, resource, objects);
         resId = resource;
         layoutInflater = LayoutInflater.from(context);
@@ -52,7 +52,7 @@ public class ListViewAdapter extends ArrayAdapter<Item<JourneyManager>> implemen
             convertView.setTag(vHolder);
         }
 
-        Item<JourneyManager> item = getItem(position);
+        Item<String, JourneyManager> item = getItem(position);
         if (item.getTypeItem() == Item.ITEM)
             return getViewItem(position, convertView, parent);
         if (item.getTypeItem() == Item.SECTION)
@@ -65,7 +65,7 @@ public class ListViewAdapter extends ArrayAdapter<Item<JourneyManager>> implemen
         vHolder.linearLayoutSection.setVisibility(View.GONE);
         vHolder.linearLayoutItem.setVisibility(View.VISIBLE);
 
-        JourneyManager journeyManager = getItem(position).getObject();
+        JourneyManager journeyManager = getItem(position).getObjectItem();
         vHolder.titleItem.setText(journeyManager.getValue());
         return convertView;
     }
@@ -75,8 +75,8 @@ public class ListViewAdapter extends ArrayAdapter<Item<JourneyManager>> implemen
         vHolder.linearLayoutSection.setVisibility(View.VISIBLE);
         vHolder.linearLayoutItem.setVisibility(View.GONE);
 
-        Item<JourneyManager> item = getItem(position);
-        vHolder.titleSection.setText(item.getNameSection());
+        Item<String, JourneyManager> item = getItem(position);
+        vHolder.titleSection.setText(item.getSection());
         vHolder.linearLayoutSection.setBackgroundColor(getContext().getResources().getColor(COLORS[item.sectionPosition % COLORS.length]));
 
         return convertView;

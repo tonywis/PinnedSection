@@ -3,10 +3,10 @@ package tonywis.library.listview.pinnedsection.ui.adapter.model;
 /**
  * Created by Tony on 19/06/2016.
  */
-public class Item<Type> {
+public class Item<TypeSection, TypeItem> {
 
-    private final Type _object;
-    private final String _nameSection;
+    private final TypeSection _objectSection;
+    private final TypeItem _objectItem;
     private final int _typeItem;
 
     public static final int ITEM = 0;
@@ -15,29 +15,21 @@ public class Item<Type> {
     public int sectionPosition;
     public int listPosition;
 
-    public Item(int typeItem, String nameSection) {
-        this(typeItem, null, nameSection);
-    }
-
-    public Item(int typeItem, Type object) {
-        this(typeItem, object, null);
-    }
-
-    private Item(int typeItem, Type object, String nameSection) {
+    public Item(int typeItem, TypeItem objectItem, TypeSection objectSection) {
         this._typeItem = typeItem;
-        this._object = object;
-        this._nameSection = nameSection;
+        this._objectItem = objectItem;
+        this._objectSection = objectSection;
     }
 
-    public Type getObject() {
-        return _object;
+    public TypeItem getObjectItem() {
+        return _objectItem;
     }
 
     public int getTypeItem() {
         return _typeItem;
     }
 
-    public String getNameSection() {
-        return _nameSection;
+    public TypeSection getSection() {
+        return _objectSection;
     }
 }

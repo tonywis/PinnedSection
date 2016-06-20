@@ -24,42 +24,42 @@ public class MainActivity extends AppCompatActivity {
 
         listView = (PinnedSectionListView) findViewById(R.id.list);
 
-        List<Item<JourneyManager>> list = new ArrayList<>();
+        List<Item<String, JourneyManager>> list = new ArrayList<>();
         int sectionPosition = 0, listPosition = 0;
 
-        Item<JourneyManager> item = new Item<>(Item.SECTION, "Section 1");
+        Item<String, JourneyManager> item = new Item<>(Item.SECTION, null, "Section 1");
         item.sectionPosition = sectionPosition;
         item.listPosition = listPosition++;
         list.add(item);
         for (int i = 0; i<10; i++){
             JourneyManager journeyManager = new JourneyManager(String.valueOf((char) ('A' + i)));
-            item = new Item<>(Item.ITEM, journeyManager);
+            item = new Item<>(Item.ITEM, journeyManager, null);
             item.sectionPosition = sectionPosition;
             item.listPosition = listPosition++;
             list.add(item);
         }
         sectionPosition++;
 
-        item = new Item<>(Item.SECTION, "Section 2");
+        item = new Item<>(Item.SECTION, null, "Section 2");
         item.sectionPosition = sectionPosition;
         item.listPosition = listPosition++;
         list.add(item);
         for (int i = 10; i<20; i++){
             JourneyManager journeyManager = new JourneyManager(String.valueOf((char) ('A' + i)));
-            item = new Item<>(Item.ITEM, journeyManager);
+            item = new Item<>(Item.ITEM, journeyManager, null);
             item.sectionPosition = sectionPosition;
             item.listPosition = listPosition++;
             list.add(item);
         }
         sectionPosition++;
 
-        item = new Item<>(Item.SECTION, "Section 3");
+        item = new Item<>(Item.SECTION, null, "Section 3");
         item.sectionPosition = sectionPosition;
         item.listPosition = listPosition++;
         list.add(item);
         for (int i = 20; i<26; i++){
             JourneyManager journeyManager = new JourneyManager(String.valueOf((char) ('A' + i)));
-            item = new Item<>(Item.ITEM, journeyManager);
+            item = new Item<>(Item.ITEM, journeyManager, null);
             item.sectionPosition = sectionPosition;
             item.listPosition = listPosition++;
             list.add(item);
